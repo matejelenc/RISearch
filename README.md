@@ -1,9 +1,17 @@
+# Introduction
+This is the code that was used to train the models and generate results for the 1. round of RIS competition. The goal of the 1. round was to classify patients as class 0 (healthy) or class 1 (has malignant lymphoma). Our model achieved an AUC score of 0.98 which can be computed from the `.csv` files `./resitve_krog1_24.csv` (the actual results) and `./napovedi-RISearch.csv` (the predictions).
+
+If someone were to use this code to train and test their own models, it should be noted that the files in `./data` contain the paths to patients' files relative to the computer that was used for training and on which the patients' files were located, therefore one should regenerate this files according to their own dataset and where it is stored on their device.
+
+ # IMPORTANT 
+ Due to file size limitations of Github, the actual models have not been committed and are available at [ris models](https://drive.google.com/drive/folders/1NajVEMzzBgibIXG42ffQhVn6cKvEz6LX?usp=drive_link).
+ 
 # Requirements
 It is expected of the user to have already installed Python and pip. To download all necessary python packages run: `./requirements.sh`
 
 # Generating Results
 Since the dataset for the 1. round of RIS has already been uploaded to Sling, it is not present in this folder.
-To generate results for the 1. round of the RIS competition, run `python ris.py <path_to_dataset>`. The default path in the ris.py file to the **RIS_test_no_masks** dataset is set to  `./RIS_test_no_masks`, therefore if the dataset is present in this folder, the results can also be generated using only `python ris.py`. **IMPORTANT**: Due to file size limitations of Github, the actual models have not been committed and are available at [ris models](https://drive.google.com/drive/folders/1NajVEMzzBgibIXG42ffQhVn6cKvEz6LX?usp=drive_link).
+To generate results for the 1. round of the RIS competition, run `python ris.py <path_to_dataset>`. The default path in the `ris.py` file to the **RIS_test_no_masks** dataset is set to  `./RIS_test_no_masks`, therefore if the dataset is present in this folder, the results can also be generated using only `python ris.py`.
 
 # Data Augmentation
 Since the dataset available was relatively small and unbalanced, additional data was acquired with the [TCIA dataset](https://www.cancerimagingarchive.net/). The data was then split into about 450 patients for training and 80 for testing. Both splits had 1:1 ratio of patients with and without malignant tumours. Additionally, to improve the training of the model, random horizontal flips and rotations to up to 30° were applied to the data.
